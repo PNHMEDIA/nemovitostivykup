@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nemovitostní Výkupy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --off-white: #fafafa;
+            --gray-light: #f5f5f5;
+            --gray-mid: #888888;
+            --gray-dark: #333333;
+            --accent: #b8860b;
+            --accent-light: #daa520;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Image Optimization */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .img-cover {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-contain {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Custom Cursor - Desktop Only */
+        .cursor {
+            width: 8px;
+            height: 8px;
+            background: var(--black);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+            display: none;
+        }
+
+        .cursor-follower {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--black);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .cursor,
+            .cursor-follower {
+                display: block;
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px;
+            mix-blend-mode: difference;
+            transition: all 0.6s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(16px, 2.5vw, 20px);
+            font-weight: 400;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--white);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            transition: right 0.6s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active .mobile-menu-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Desktop Navigation */
+        @media (min-width: 768px) {
+            .nav {
+                padding: 30px 50px;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=1080&fit=crop&crop=center');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(10px, 2vw, 14px);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 8vw, 100px);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .hero-description {
+            font-size: clamp(14px, 3vw, 18px);
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 15px 30px;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+            text-decoration: none;
+            font-size: clamp(10px, 2vw, 12px);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            display: none;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: var(--white);
+            margin: 20px auto 0;
+            opacity: 0.5;
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @media (min-width: 768px) {
+            .scroll-indicator {
+                display: block;
+            }
+
+            .hero-bg {
+                background-attachment: fixed;
+            }
+        }
+
+        /* Mobile Hero Adjustments */
+        @media (max-width: 767px) {
+            .hero {
+                min-height: 100vh;
+                height: auto;
+                padding: 80px 0 40px;
+            }
+
+            .hero-bg {
+                background-attachment: scroll;
+                height: 100%;
+            }
+
+            .hero-content {
+                padding: 0 30px;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: clamp(80px, 15vw, 150px) clamp(20px, 5vw, 50px);
+            background: var(--off-white);
+        }
+
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto clamp(60px, 12vw, 100px);
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: clamp(10px, 2vw, 12px);
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 6vw, 80px);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--black);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1px;
+            background: var(--gray-mid);
+        }
+
+        .service-item {
+            background: var(--white);
+            padding: clamp(40px, 8vw, 80px) clamp(30px, 6vw, 60px);
+            text-align: center;
+            transition: all 0.6s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-item:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .service-number {
+            font-size: clamp(12px, 2.5vw, 14px);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            font-size: clamp(12px, 2.5vw, 14px);
+            font-weight: 300;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Property Categories */
+        .categories {
+            padding: 0;
+            background: var(--white);
+        }
+
+        .categories-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            min-height: auto;
+        }
+
+        .categories-text {
+            padding: clamp(60px, 12vw, 100px) clamp(30px, 6vw, 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .categories-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 5vw, 60px);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .categories-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .category-item {
+            font-size: clamp(14px, 3vw, 16px);
+            font-weight: 300;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            color: var(--accent-light);
+        }
+
+        .categories-features {
+            font-size: clamp(12px, 2.5vw, 14px);
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .categories-cta {
+            display: inline-block;
+            padding: 15px 30px;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+            text-decoration: none;
+            font-size: clamp(10px, 2vw, 12px);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+            align-self: flex-start;
+        }
+
+        .categories-cta:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .categories-visual {
+            background: var(--gray-light);
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .categories-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center');
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.1);
+        }
+
+        @media (min-width: 768px) {
+            .categories-content {
+                grid-template-columns: 1fr 1fr;
+                min-height: 100vh;
+            }
+
+            .categories-visual {
+                min-height: auto;
+            }
+        }
+
+        /* Property Showcase */
+        .properties {
+            padding: clamp(80px, 15vw, 150px) clamp(20px, 5vw, 50px);
+            background: var(--white);
+        }
+
+        .properties-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transition: all 0.6s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .property-card:nth-child(1) .property-image {
+            background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop&crop=center');
+        }
+
+        .property-card:nth-child(2) .property-image {
+            background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop&crop=center');
+        }
+
+        .property-card:nth-child(3) .property-image {
+            background-image: url('https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=600&h=400&fit=crop&crop=center');
+        }
+
+        .property-content {
+            padding: clamp(20px, 4vw, 30px);
+        }
+
+        .property-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(16px, 3vw, 20px);
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+
+        .property-location {
+            color: var(--gray-mid);
+            font-size: clamp(12px, 2.5vw, 14px);
+            margin-bottom: 15px;
+        }
+
+        .property-price {
+            font-size: clamp(16px, 3.5vw, 20px);
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        @media (min-width: 600px) {
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .properties-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .property-image {
+                height: 250px;
+            }
+        }
+
+        /* Stats */
+        .stats {
+            padding: clamp(60px, 12vw, 100px) clamp(20px, 5vw, 50px);
+            background: var(--white);
+        }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(30px, 6vw, 60px);
+            text-align: center;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 8vw, 48px);
+            font-weight: 300;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: clamp(10px, 2vw, 12px);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+        }
+
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--black);
+            color: var(--white);
+            min-height: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: clamp(80px, 15vw, 100px) clamp(20px, 5vw, 50px);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(40px, 8vw, 80px);
+            align-items: center;
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 5vw, 50px);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .contact-description {
+            font-size: clamp(14px, 3vw, 16px);
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .contact-details {
+            font-size: clamp(12px, 2.5vw, 14px);
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        .contact-form {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            color: var(--white);
+            font-size: clamp(14px, 3vw, 16px);
+            font-weight: 300;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-bottom-color: var(--white);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-submit {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+            padding: 15px 30px;
+            font-size: clamp(10px, 2vw, 12px);
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        @media (min-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-info {
+                transform: translateX(-30px);
+            }
+
+            .contact-form {
+                transform: translateX(30px);
+            }
+
+            .form-submit {
+                width: auto;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: clamp(30px, 6vw, 50px);
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-text {
+            font-size: clamp(10px, 2vw, 12px);
+            font-weight: 300;
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        /* Performance Optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .service-item:hover,
+            .property-card:hover,
+            .hero-cta:hover,
+            .categories-cta:hover,
+            .form-submit:hover {
+                transform: none;
+                background: var(--black);
+                color: var(--white);
+            }
+
+            .category-item:hover {
+                color: var(--accent-light);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-text">Načítání</div>
+    </div>
+
+    <!-- Custom Cursors -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">Nemovitostní Výkupy</a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">O nás</a></li>
+                <li><a href="#services" class="nav-link">Jak probíhá výkup</a></li>
+                <li><a href="#properties" class="nav-link">Reference</a></li>
+                <li><a href="#contact" class="nav-link">Kontakt</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#about" class="mobile-menu-link">O nás</a>
+        <a href="#services" class="mobile-menu-link">Jak probíhá výkup</a>
+        <a href="#properties" class="mobile-menu-link">Reference</a>
+        <a href="#contact" class="mobile-menu-link">Kontakt</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-subtitle">Exkluzivní výkup nemovitostí</div>
+            <h1 class="hero-title">Objevte nádherný výhled, který vás okouzlí</h1>
+            <p class="hero-description">Vychutnejte si relaxaci v našem nekonečném bazénu. Užijte si dokonalé spojení elegance, komfortu a klidu. Vstupte do oázy, kde se sny stávají skutečností.</p>
+            <a href="#contact" class="hero-cta">Nacenit nemovitost zdarma</a>
+        </div>
+        <div class="scroll-indicator">
+            <div>Scroll</div>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <div class="section-subtitle">Naše služby</div>
+            <h2 class="section-title">Vykoupíme podíly i celé nemovitosti za dobrou cenu</h2>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="service-number">01</div>
+                <h3 class="service-title">Nacenění do 24 hodin</h3>
+                <p class="service-description">Profesionální ohodnocení vaší nemovitosti během jednoho dne s transparentním přístupem a fair oceněním.</p>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-number">02</div>
+                <h3 class="service-title">Okamžitá výplata</h3>
+                <p class="service-description">Peníze vyplatíme ihned při podpisu smlouvy. Žádné čekání na bankovní převody či komplikace.</p>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-number">03</div>
+                <h3 class="service-title">Bez poplatků</h3>
+                <p class="service-description">Žádné skryté poplatky ani provize. Nabízíme čistou cenu bez dalších nákladů pro vás.</p>
+            </div>
+            
+            <div class="service-item">
+                <div class="service-number">04</div>
+                <h3 class="service-title">Kompletní servis</h3>
+                <p class="service-description">Převod nemovitosti na úřadech zařídíme my. Postaráme se o veškerou administrativu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Categories -->
+    <section class="categories" id="about">
+        <div class="categories-content">
+            <div class="categories-text">
+                <h2 class="categories-title">Specializujeme se na všechny typy nemovitostí</h2>
+                
+                <ul class="categories-list">
+                    <li class="category-item">Rodinné domy</li>
+                    <li class="category-item">Byty všech velikostí</li>
+                    <li class="category-item">Chaty a chalupy</li>
+                    <li class="category-item">Garáže a parkovací místa</li>
+                    <li class="category-item">Komerční prostory</li>
+                    <li class="category-item">Pozemky</li>
+                </ul>
+                
+                <div class="categories-features">
+                    Nabízíme rychlé a profesionální řešení pro prodej vaší nemovitosti. 
+                    S našimi zkušenostmi a individuálním přístupem zajistíme smooth proces 
+                    od ohodnocení až po finální převod.
+                </div>
+                
+                <a href="#contact" class="categories-cta">Získat nabídku</a>
+            </div>
+            
+            <div class="categories-visual">
+                <div class="categories-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Showcase -->
+    <section class="properties" id="properties">
+        <div class="section-header">
+            <div class="section-subtitle">Naše reference</div>
+            <h2 class="section-title">Úspěšně realizované výkupy</h2>
+        </div>
+        
+        <div class="properties-grid">
+            <div class="property-card">
+                <div class="property-image"></div>
+                <div class="property-content">
+                    <h3 class="property-title">Rodinný dům Praha 6</h3>
+                    <p class="property-location">Praha 6 - Dejvice</p>
+                    <div class="property-price">12 500 000 Kč</div>
+                </div>
+            </div>
+            
+            <div class="property-card">
+                <div class="property-image"></div>
+                <div class="property-content">
+                    <h3 class="property-title">Byt 3+kk Vinohrady</h3>
+                    <p class="property-location">Praha 2 - Vinohrady</p>
+                    <div class="property-price">8 900 000 Kč</div>
+                </div>
+            </div>
+            
+            <div class="property-card">
+                <div class="property-image"></div>
+                <div class="property-content">
+                    <h3 class="property-title">Vila s bazénem</h3>
+                    <p class="property-location">Praha 5 - Smíchov</p>
+                    <div class="property-price">25 000 000 Kč</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-count="250">250</div>
+                <div class="stat-label">Úspěšných výkupů</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="15">15</div>
+                <div class="stat-label">Let zkušeností</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="24">24</div>
+                <div class="stat-label">Hodin na ohodnocení</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="100">100</div>
+                <div class="stat-label">% spokojenost</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2 class="contact-title">Pojďme si promluvit o vaší nemovitosti</h2>
+                <p class="contact-description">
+                    Kontaktujte nás pro bezplatné a nezávazné ocenění vaší nemovitosti. 
+                    Naši odborníci vám poskytnou profesionální poradenství a transparentní nabídku.
+                </p>
+                <div class="contact-details">
+                    <p>info@nemovitostnivykupy.cz</p>
+                    <p>+420 123 456 789</p>
+                    <p>Praha, Česká republika</p>
+                </div>
+            </div>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Vaše jméno" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Váš email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-input" placeholder="Váš telefon">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-input form-textarea" placeholder="Popište vaši nemovitost..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Odeslat poptávku</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">© 2025 Nemovitostní Výkupy — Všechna práva vyhrazena</div>
+    </footer>
+
+    <script>
+        // GSAP Setup
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Detect mobile
+        const isMobile = window.innerWidth <= 1024;
+
+        // Custom Cursor (Desktop only)
+        if (!isMobile) {
+            const cursor = document.querySelector('.cursor');
+            const cursorFollower = document.querySelector('.cursor-follower');
+            let mouseX = 0, mouseY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            gsap.to(cursor, {
+                duration: 0,
+                x: () => mouseX,
+                y: () => mouseY,
+                ease: "none"
+            });
+
+            gsap.to(cursorFollower, {
+                duration: 0.3,
+                x: () => mouseX - 15,
+                y: () => mouseY - 15,
+                ease: "power2.out"
+            });
+        }
+
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                gsap.to(mobileMenuLinks, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: 0.1,
+                    delay: 0.3,
+                    ease: "power2.out"
+                });
+            } else {
+                gsap.to(mobileMenuLinks, {
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.3,
+                    stagger: 0.05,
+                    ease: "power2.inOut"
+                });
+            }
+        });
+
+        // Close mobile menu on link click
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                gsap.to(mobileMenuLinks, {
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.3,
+                    stagger: 0.05,
+                    ease: "power2.inOut"
+                });
+            });
+        });
+
+        // Loading Animation
+        const tl = gsap.timeline();
+        
+        tl.to('.loader-text', {
+            opacity: 0,
+            y: -50,
+            duration: 0.5,
+            delay: 1
+        })
+        .to('.loader', {
+            y: '-100%',
+            duration: 0.8,
+            ease: "power2.inOut"
+        })
+        .set('.loader', { display: 'none' });
+
+        // Hero Animations
+        const heroTl = gsap.timeline({ delay: 2 });
+        
+        heroTl
+            .to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            })
+            .to('.hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+            }, '-=0.6')
+            .to('.hero-description', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            }, '-=0.7')
+            .to('.hero-cta', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power2.out"
+            }, '-=0.5');
+
+        // Section Animations
+        gsap.utils.toArray('.section-subtitle').forEach(subtitle => {
+            gsap.to(subtitle, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                scrollTrigger: {
+                    trigger: subtitle,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        gsap.utils.toArray('.section-title').forEach(title => {
+            gsap.to(title, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: title,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        // Services Animation
+        gsap.utils.toArray('.service-item').forEach((item, index) => {
+            gsap.to(item, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: index * 0.1,
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%",
+                    end: "bottom 15%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        // Categories Animation
+        gsap.to('.categories-title', {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.categories-title',
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        gsap.utils.toArray('.category-item').forEach((item, index) => {
+            gsap.to(item, {
+                opacity: 1,
+                x: 0,
+                duration: 0.6,
+                delay: index * 0.1,
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        gsap.to('.categories-features', {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.categories-features',
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        gsap.to('.categories-cta', {
+            opacity: 1,
+            x: 0,
+            duration: 0.6,
+            scrollTrigger: {
+                trigger: '.categories-cta',
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        gsap.to('.categories-bg', {
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            scrollTrigger: {
+                trigger: '.categories-bg',
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        // Properties Animation
+        gsap.utils.toArray('.property-card').forEach((card, index) => {
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: index * 0.2,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    end: "bottom 15%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        // Stats Animation
+        gsap.utils.toArray('.stat-item').forEach((item, index) => {
+            gsap.to(item, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                delay: index * 0.1,
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%",
+                    end: "bottom 15%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        // Contact Animation
+        gsap.to('.contact-info', {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.contact-info',
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        gsap.to('.contact-form', {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: '.contact-form',
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1.5,
+                        scrollTo: target,
+                        ease: "power2.inOut"
+                    });
+                }
+            });
+        });
+
+        // Form Submit
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            gsap.to('.form-submit', {
+                scale: 0.95,
+                duration: 0.1,
+                yoyo: true,
+                repeat: 1,
+                ease: "power2.inOut"
+            });
+            
+            setTimeout(() => {
+                alert('Děkujeme za vaši zprávu! Ozveme se vám co nejdříve.');
+            }, 200);
+        });
+
+        // Parallax Effect for Hero (Desktop only)
+        if (!isMobile) {
+            gsap.to('.hero-bg', {
+                y: (i, target) => -ScrollTrigger.maxScroll(window) * 0.3,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: '.hero',
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true,
+                    invalidateOnRefresh: true
+                }
+            });
+        }
+
+        // Nav Color Change
+        ScrollTrigger.create({
+            trigger: ".services",
+            start: "top 100px",
+            end: "bottom top",
+            onEnter: () => gsap.to('.nav', { mixBlendMode: 'normal', duration: 0.3 }),
+            onLeave: () => gsap.to('.nav', { mixBlendMode: 'difference', duration: 0.3 }),
+            onEnterBack: () => gsap.to('.nav', { mixBlendMode: 'normal', duration: 0.3 }),
+            onLeaveBack: () => gsap.to('.nav', { mixBlendMode: 'difference', duration: 0.3 })
+        });
+
+        // Refresh ScrollTrigger on resize
+        window.addEventListener('resize', () => {
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+</html>
