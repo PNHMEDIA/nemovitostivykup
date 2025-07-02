@@ -567,7 +567,7 @@
 <body class="bg-gray-50 text-slate-800">
 
     <!-- Header & Navigation -->
-    <header class="bg-white/95 backdrop-blur-lg sticky top-0 z-50 shadow-sm border-b border-gray-100">
+    <header class="bg-white/95 backdrop-blur-lg sticky top-0 z-30 shadow-sm border-b border-gray-100">
         <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center">
                 <img src="https://nemovitostnivykupy.cz/images/loga/Nemovitostni_vykupy-White@2x.png" alt="Nemovitostní výkupy" class="h-8 sm:h-10 w-auto filter invert">
@@ -593,20 +593,7 @@
         </div>
         
         <!-- Mobile Navigation -->
-        <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-40 md:hidden" id="mobileMenu">
-            <div class="p-6 pt-20">
-                <nav class="flex flex-col space-y-6">
-                    <a href="#o-nas" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 text-lg font-medium mobile-nav-link">O nás</a>
-                    <a href="#jak-to-funguje" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 text-lg font-medium mobile-nav-link">Jak to funguje</a>
-                    <a href="#faq" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 text-lg font-medium mobile-nav-link">FAQ</a>
-                    <a href="#reference" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 text-lg font-medium mobile-nav-link">Reference</a>
-                    <a href="#kontakt" class="cta-button text-center mobile-nav-link">Kontaktovat</a>
-                </nav>
-            </div>
-        </div>
         
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-overlay fixed inset-0 bg-black bg-opacity-50 z-30 hidden" id="mobileOverlay"></div>
     </header>
 
     <main>
@@ -1014,7 +1001,7 @@
                 </div>
                 
                 <div class="modern-form max-w-6xl mx-auto p-6 md:p-12 rounded-3xl gsap-reveal">
-                    <div class="grid md:grid-cols-2 gap-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <!-- Contact Information -->
                         <div class="text-slate-800">
                             <h3 class="text-2xl font-bold mb-8 text-slate-900">Kontaktní údaje</h3>
@@ -1136,12 +1123,35 @@
         </div>
     </footer>
 
+
+
+    <div class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-40 md:hidden" id="mobileMenu">
+        <div class="p-6">
+            <div class="text-right mb-8">
+                <button id="close-menu-btn" class="text-slate-600 hover:text-blue-600">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        
+            <nav class="flex flex-col space-y-6">
+                <a href="#o-nas" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 text-lg font-medium mobile-nav-link">O nás</a>
+                <a href="#jak-to-funguje" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 text-lg font-medium mobile-nav-link">Jak to funguje</a>
+                <a href="#faq" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 text-lg font-medium mobile-nav-link">FAQ</a>
+                <a href="#reference" class="text-slate-600 hover:text-blue-600 transition-colors duration-300 text-lg font-medium mobile-nav-link">Reference</a>
+                <a href="#kontakt" class="cta-button text-center mobile-nav-link">Kontaktovat</a>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="mobile-overlay fixed inset-0 bg-black bg-opacity-50 z-30 hidden" id="mobileOverlay"></div>
+
     <script>
         // Mobile Navigation
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileOverlay = document.getElementById('mobileOverlay');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const closeMenuButton = document.getElementById('close-menu-btn');
 
         function toggleMobileMenu() {
             hamburger.classList.toggle('open');
@@ -1157,8 +1167,11 @@
             document.body.classList.remove('overflow-hidden');
         }
 
+        
+
         hamburger.addEventListener('click', toggleMobileMenu);
         mobileOverlay.addEventListener('click', closeMobileMenu);
+        closeMenuButton.addEventListener('click', closeMobileMenu); 
         
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', closeMobileMenu);
