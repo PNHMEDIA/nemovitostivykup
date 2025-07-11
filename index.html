@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="cs" class="scroll-smooth">
-<head>
+<html lang="cs" class="scroll-smooth" style="scroll-behavior: smooth;"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Výkup Nemovitostí Praha | Rychlý výkup domů, bytů, chat | Nemovitostnivykupy.cz</title>
+    <title>Výkup podílu na nemovitostech a celý nemovitostí po celé ČR | Rychlý výkup domů, bytů, chat, garáží | Nemovitostnivykupy.cz</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Vykoupíme vaši nemovitost v Praze za 24 hodin. Rychlý výkup domů, bytů, chat a garáží. Žádné poplatky, peníze ihned. Nezávazná nabídka zdarma.">
-    <meta name="keywords" content="výkup nemovitostí Praha, rychlý prodej domu, výkup bytu, prodej nemovitosti, výkup podílu nemovitosti">
+    <meta name="description" content="Vykoupíme podíl na nemovitosti nebo celou nemovitost obratem. Peníze dostanete ihned. Nacenění nezávazně do 24 hodin. Rychlý výkup domů, bytů, chat a garáží. Žádné poplatky, peníze ihned. Nezávazná nabídka zdarma.">
+    <meta name="keywords" content="výkup a prodej nemovitostí ČR, rychlý prodej domu, výkup bytu, výkup a prodej nemovitosti, výkup podílu nemovitosti">
     <meta name="author" content="Nemovitostnivykupy.cz">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="Nemovitostnivykupy.cz">
@@ -21,13 +19,16 @@
     
     <!-- Google Fonts: Inter for clean, professional look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     
     <!-- GSAP Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
 
     <!-- Structured Data / Schema.org -->
     <script type="application/ld+json">
@@ -58,531 +59,9 @@
     }
     </script>
 
-    <style>
-        /* Custom styles for professional look */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FAFBFC;
-            color: #1E293B;
-            line-height: 1.6;
-        }
-        
-        .hero-section {
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.55) 0%, rgba(59, 130, 246, 0.75) 100%), url('https://www.jakubzizka.cz/wp-content/uploads/2020/05/videoprohlídka-nemovitosti-proč-se-vyplatí-a-jak-má-vypadat.jpg') no-repeat center center;
-            background-size: cover;
-            min-height: 100vh;
-            position: relative;
-        }
-        
-        
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
 
-        /* Enhanced form styling */
-        .modern-form {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        .form-input, .form-select {
-            background: #F8FAFC;
-            border: 2px solid #E2E8F0;
-            border-radius: 12px;
-            padding: 16px 20px;
-            transition: all 0.3s ease;
-            font-size: 16px;
-            font-weight: 500;
-            width: 100%;
-        }
-        
-        .form-input:focus, .form-select:focus {
-            outline: none;
-            border-color: #0EA5E9;
-            background: #FFFFFF;
-            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
-        }
-        
-        .form-input::placeholder {
-            color: #64748B;
-            font-weight: 400;
-        }
-
-        /* Button enhancements */
-        .cta-button {
-            background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-weight: 600;
-            padding: 16px 32px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39);
-            letter-spacing: 0.025em;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(14, 165, 233, 0.5);
-        }
-
-        /* Card improvements */
-        .benefit-card {
-            background: white;
-            border-radius: 16px;
-            padding: 32px 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            border: 1px solid #F1F5F9;
-            transition: all 0.3s ease;
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Icon styling */
-        .benefit-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .stat-item {
-            text-align: center;
-            color: white;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 8px;
-            background: linear-gradient(45deg, #FFFFFF, #E0F2FE);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Timeline Styles */
-        .timeline-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 0;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #E2E8F0;
-            transform: translateX(-50%);
-        }
-
-        .timeline-step {
-            position: relative;
-            margin-bottom: 80px;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        .timeline-step:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-content {
-            position: relative;
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            border: 1px solid #F1F5F9;
-        }
-
-        .timeline-step:nth-child(odd) .timeline-content {
-            margin-left: 0;
-            margin-right: auto;
-            transform: translateX(-30px);
-        }
-
-        .timeline-step:nth-child(even) .timeline-content {
-            margin-left: auto;
-            margin-right: 0;
-            transform: translateX(30px);
-        }
-
-        .timeline-icon {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            border: 4px solid white;
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-        }
-
-        .step-label {
-            color: #0EA5E9;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .step-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1E293B;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .step-description {
-            color: #64748B;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        /* FAQ Section */
-        .faq-item {
-            background: white;
-            border-radius: 16px;
-            border: 1px solid #F1F5F9;
-            margin-bottom: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active {
-            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15);
-            border-color: #0EA5E9;
-        }
-
-        .faq-question {
-            padding: 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            font-weight: 600;
-            color: #1E293B;
-            background: transparent;
-            border: none;
-            width: 100%;
-            text-align: left;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            color: #0EA5E9;
-        }
-
-        .faq-icon {
-            transition: transform 0.3s ease;
-            color: #0EA5E9;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            background: #FAFBFC;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 24px 24px 24px;
-        }
-
-        /* Section headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1E293B;
-            margin-bottom: 16px;
-            letter-spacing: -0.025em;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            font-size: 1.25rem;
-            color: #64748B;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-
-        /* Mobile Navigation */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-        
-        .hamburger {
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-            transition: all 0.25s;
-            position: relative;
-        }
-        .hamburger-line {
-            display: block;
-            height: 2px;
-            width: 100%;
-            background: #1e293b;
-            margin-bottom: 5px;
-            transition: all 0.25s;
-            border-radius: 2px;
-        }
-        .hamburger.open .hamburger-line:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .hamburger.open .hamburger-line:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.open .hamburger-line:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-
-        .gsap-reveal {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(50px);
-        }
-
-        /* Enhanced Mobile and Tablet Styles */
-        @media (max-width: 640px) {
-            .section-title {
-                font-size: 1.875rem;
-                line-height: 1.2;
-            }
-            .section-subtitle {
-                font-size: 1rem;
-                padding: 0 16px;
-            }
-            #hero-cards {
-                bottom: -60px;
-                padding: 0 16px;
-            }
-            #benefity {
-                padding-top: 100px;
-            }
-            .hero-content {
-                padding: 60px 0;
-            }
-            .modern-form {
-                padding: 24px 16px;
-                margin: 0 16px;
-                border-radius: 20px;
-            }
-            .benefit-card {
-                padding: 24px 16px;
-            }
-            .timeline-content {
-                padding: 24px 20px;
-            }
-            .step-title {
-                font-size: 20px;
-            }
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            .faq-question {
-                padding: 20px;
-                font-size: 16px;
-            }
-        }
-
-        @media (min-width: 641px) and (max-width: 768px) {
-            .section-title {
-                font-size: 2.25rem;
-            }
-            .section-subtitle {
-                font-size: 1.125rem;
-            }
-            #hero-cards {
-                bottom: -80px;
-                padding: 0 24px;
-            }
-            #benefity {
-                padding-top: 120px;
-            }
-            .modern-form {
-                padding: 32px 24px;
-                margin: 0 24px;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            #hero-cards {
-                bottom: -100px;
-            }
-            #benefity {
-                padding-top: 140px;
-            }
-        }
-
-        /* Timeline Mobile Responsive */
-        @media (max-width: 768px) {
-            .timeline-line {
-                left: 30px;
-            }
-
-            .timeline-step:nth-child(odd) .timeline-content,
-            .timeline-step:nth-child(even) .timeline-content {
-                margin-left: 80px;
-                margin-right: 0;
-                transform: translateX(0);
-                max-width: calc(100% - 80px);
-            }
-
-            .timeline-icon {
-                left: 30px;
-                transform: translateY(-50%);
-                width: 50px;
-                height: 50px;
-            }
-
-            .timeline-content {
-                padding: 20px;
-            }
-
-            .step-title {
-                font-size: 18px;
-            }
-        }
-
-        /* Enhanced tablet styles */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .benefit-card {
-                padding: 28px 20px;
-            }
-            
-            .grid.md\\:grid-cols-2 {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .grid.lg\\:grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Floating animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Pulse animation for CTA buttons */
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39); }
-            50% { box-shadow: 0 8px 25px 0 rgba(14, 165, 233, 0.6); }
-        }
-
-        .cta-button {
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        .cta-button:hover {
-            animation: none;
-        }
-        
-
-        /* =================================================================== */
-/* HIDE THE PROPERTY CARD ON MOBILE & TABLET */
-/* =================================================================== */
-@media (max-width: 767px) {
-  
-  /* This completely hides the card section on smaller screens */
-  #hero-cards {
-    display: none !important;
-  }
-
-  /* This reduces the large gap that was left behind */
-  #benefity {
-    padding-top: 60px;
-  }
-
-}
-    </style>
-</head>
-<body class="bg-gray-50 text-slate-800">
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-bottom-20{bottom:-5rem}.left-1\/2{left:50%}.right-0{right:0px}.top-0{top:0px}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-40{z-index:40}.order-1{order:1}.order-2{order:2}.mx-auto{margin-left:auto;margin-right:auto}.-mt-20{margin-top:-5rem}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-56{margin-bottom:14rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-12{height:3rem}.h-24{height:6rem}.h-32{height:8rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-24{width:6rem}.w-32{width:8rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-80{width:20rem}.w-auto{width:auto}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-8{--tw-translate-y:2rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-4{border-width:4px}.border-b{border-bottom-width:1px}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/95{background-color:rgb(255 255 255 / 0.95)}.bg-opacity-50{--tw-bg-opacity:0.5}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-blue-50{--tw-gradient-from:#eff6ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 246 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-500{--tw-gradient-from:#3b82f6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 130 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-blue-900{--tw-gradient-from:#1e3a8a var(--tw-gradient-from-position);--tw-gradient-to:rgb(30 58 138 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-indigo-50{--tw-gradient-to:#eef2ff var(--tw-gradient-to-position)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-slate-900{--tw-gradient-to:#0f172a var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-12{padding-left:3rem;padding-right:3rem}.px-4{padding-left:1rem;padding-right:1rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-20{padding-bottom:5rem}.pt-40{padding-top:10rem}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.text-blue-100{--tw-text-opacity:1;color:rgb(219 234 254 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.invert{--tw-invert:invert(100%);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-lg{--tw-backdrop-blur:blur(16px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-white\/50:hover{background-color:rgb(255 255 255 / 0.5)}.hover\:text-blue-600:hover{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:bg-blue-200{--tw-bg-opacity:1;background-color:rgb(191 219 254 / var(--tw-bg-opacity, 1))}@media (min-width: 640px){.sm\:-bottom-24{bottom:-6rem}.sm\:h-10{height:2.5rem}.sm\:h-8{height:2rem}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}}@media (min-width: 768px){.md\:-bottom-20{bottom:-5rem}.md\:order-1{order:1}.md\:order-2{order:2}.md\:mb-3{margin-bottom:0.75rem}.md\:flex{display:flex}.md\:hidden{display:none}.md\:h-12{height:3rem}.md\:h-6{height:1.5rem}.md\:w-12{width:3rem}.md\:w-6{width:1.5rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:gap-6{gap:1.5rem}.md\:gap-8{gap:2rem}.md\:p-12{padding:3rem}.md\:p-8{padding:2rem}.md\:py-20{padding-top:5rem;padding-bottom:5rem}.md\:py-28{padding-top:7rem;padding-bottom:7rem}.md\:pb-28{padding-bottom:7rem}.md\:pt-48{padding-top:12rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-6xl{font-size:3.75rem;line-height:1}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}</style></head>
+<body class="bg-gray-50 text-slate-800" style="">
 
     <!-- Header & Navigation -->
     <header class="bg-white/95 backdrop-blur-lg sticky top-0 z-30 shadow-sm border-b border-gray-100">
@@ -616,26 +95,26 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-section text-white relative flex items-center">
-            <div class="hero-content container mx-auto px-4 sm:px-6 text-center py-16 sm:py-24 md:py-32">
-                <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight opacity-0 translate-y-8">
-                    Vykoupíme vaši nemovitost
-                    <span class="block text-3xl sm:text-4xl md:text-6xl font-light mt-2">férově a rychle</span>
+        <section class="hero-section text-white relative flex items-center justify-center min-h-screen">
+            <div class="hero-content container mx-auto px-4 sm:px-6 text-center -mt-20">
+                <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight opacity-0 translate-y-8" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    Vykoupíme podíly i celé nemovitosti
+                    <span class="block text-3xl sm:text-4xl md:text-6xl font-light mt-2">rychle a za dobrou cenu</span>
                 </h1>
-                <p id="hero-subtitle" class="text-xl sm:text-2xl md:text-3xl font-light text-blue-100 mb-10 opacity-0 translate-y-8 max-w-4xl mx-auto">
-                    Diskrétně, za nejlepší možnou cenu. Bez starostí a poplatků.
+                <p id="hero-subtitle" class="text-xl sm:text-2xl md:text-3xl font-light text-blue-100 mb-10 opacity-0 translate-y-8 max-w-4xl mx-auto" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    Diskrétně, za nejlepší možnou cenu. Bez starostí a poplatků. Naceníme váš podíl nebo nemovitost do 24 hodin nezávazně a zdarma.
                 </p>
-                <a href="#kontakt" id="hero-button" class="cta-button text-lg px-12 py-4 inline-block opacity-0 translate-y-8">
+                <a href="#kontakt" id="hero-button" class="cta-button text-lg px-12 py-4 inline-block opacity-0 translate-y-8 mb-56" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
                     Nezávazná nabídka zdarma
                 </a>
                 
                 <!-- Property Types -->
-                <div id="hero-cards" class="absolute -bottom-20 sm:-bottom-24 md:-bottom-20 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 opacity-0 translate-y-8 z-20">
+                <div id="hero-cards" class="absolute -bottom-20 sm:-bottom-24 md:-bottom-20 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 opacity-0 translate-y-8 z-20" style="translate: none; rotate: none; scale: none; transform: translate(-50%, 0%); opacity: 1;">
                     <div class="bg-white/95 backdrop-blur-lg p-6 md:p-8 rounded-2xl shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-slate-800 border border-white/20">
                         <div class="text-center">
                             <div class="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 bg-blue-100 rounded-xl flex items-center justify-center">
                                 <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                                 </svg>
                             </div>
                             <span class="font-semibold block text-sm md:text-lg">Dům</span>
@@ -644,7 +123,7 @@
                         <div class="text-center">
                             <div class="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 bg-blue-100 rounded-xl flex items-center justify-center">
                                 <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                                 </svg>
                             </div>
                             <span class="font-semibold block text-sm md:text-lg">Byt</span>
@@ -653,7 +132,7 @@
                         <div class="text-center">
                             <div class="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 bg-blue-100 rounded-xl flex items-center justify-center">
                                 <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M10.5 3L12 2l1.5 1H21v6H3V3h7.5z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M10.5 3L12 2l1.5 1H21v6H3V3h7.5z"></path>
                                 </svg>
                             </div>
                             <span class="font-semibold block text-sm md:text-lg">Chata</span>
@@ -662,7 +141,7 @@
                         <div class="text-center">
                             <div class="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 bg-blue-100 rounded-xl flex items-center justify-center">
                                 <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                                 </svg>
                             </div>
                             <span class="font-semibold block text-sm md:text-lg">Garáž</span>
@@ -676,50 +155,50 @@
         <!-- Key Benefits Section -->
         <section id="benefity" class="pt-40 pb-20 md:pt-48 md:pb-28 bg-white relative z-10">
             <div class="container mx-auto px-4 sm:px-6">
-                <div class="section-header gsap-reveal">
+                <div class="section-header gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                     <h2 class="section-title">Proč si vybrat nás</h2>
                     <p class="section-subtitle">Rychlost, transparentnost a profesionalita na prvním místě</p>
                 </div>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                    <div class="benefit-card gsap-reveal floating">
+                    <div class="benefit-card gsap-reveal floating" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="benefit-icon">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <h3 class="text-xl font-bold mb-3 text-center">Nacenění do 24 hodin</h3>
                         <p class="text-slate-600 text-center">Získejte rychlou a nezávaznou cenovou nabídku během jednoho dne.</p>
                     </div>
                     
-                    <div class="benefit-card gsap-reveal floating" style="animation-delay: 1s;">
+                    <div class="benefit-card gsap-reveal floating" style="animation-delay: 1s; translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="benefit-icon">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-center">Peníze ihned na účet</h3>
-                        <p class="text-slate-600 text-center">Vyplácíme finance okamžitě při podpisu kupní smlouvy.</p>
+                        <h3 class="text-xl font-bold mb-3 text-center">Peníze dostanete ihned na účet</h3>
+                        <p class="text-slate-600 text-center">Kupní cenu vyplatíme okamžitě při podpisu kupní smlouvy.</p>
                     </div>
                     
-                    <div class="benefit-card gsap-reveal floating" style="animation-delay: 2s;">
+                    <div class="benefit-card gsap-reveal floating" style="animation-delay: 2s; translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="benefit-icon">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <h3 class="text-xl font-bold mb-3 text-center">Žádné poplatky</h3>
                         <p class="text-slate-600 text-center">Naše služby jsou pro vás zcela zdarma, bez skrytých poplatků.</p>
                     </div>
                     
-                    <div class="benefit-card gsap-reveal floating" style="animation-delay: 3s;">
+                    <div class="benefit-card gsap-reveal floating" style="animation-delay: 3s; translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="benefit-icon">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
                         <h3 class="text-xl font-bold mb-3 text-center">Kompletní administrativa</h3>
-                        <p class="text-slate-600 text-center">Všechny úřední záležitosti vyřídíme za vás, zcela zdarma.</p>
+                        <p class="text-slate-600 text-center">Úřední záležitosti vyřídíme za vás zdarma a uhradíme všechny poplatky.</p>
                     </div>
                 </div>
             </div>
@@ -728,22 +207,18 @@
         <!-- Stats Section -->
         <section class="stats-section py-16 md:py-20 text-white relative">
             <div class="container mx-auto px-4 sm:px-6 relative z-10">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="stat-item gsap-reveal">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="stat-item gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="stat-number" data-target="250">0</div>
                         <div class="text-lg font-medium">Prodaných nemovitostí</div>
                     </div>
-                    <div class="stat-item gsap-reveal">
+                    <div class="stat-item gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="stat-number" data-target="24">0</div>
                         <div class="text-lg font-medium">Hodin do nacenění</div>
                     </div>
-                    <div class="stat-item gsap-reveal">
+                    <div class="stat-item gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="stat-number" data-target="98">0</div>
                         <div class="text-lg font-medium">% spokojených klientů</div>
-                    </div>
-                    <div class="stat-item gsap-reveal">
-                        <div class="stat-number" data-target="5">0</div>
-                        <div class="text-lg font-medium">Let zkušeností</div>
                     </div>
                 </div>
             </div>
@@ -753,10 +228,10 @@
         <section id="o-nas" class="py-20 md:py-28 bg-gray-50">
             <div class="container mx-auto px-4 sm:px-6">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="gsap-reveal order-2 md:order-1">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Moderní interiér nemovitosti" class="rounded-2xl shadow-2xl w-full">
+                    <div class="gsap-reveal order-2 md:order-1" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80" alt="Moderní interiér nemovitosti" class="rounded-2xl shadow-2xl w-full">
                     </div>
-                    <div class="gsap-reveal order-1 md:order-2">
+                    <div class="gsap-reveal order-1 md:order-2" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">Dáváme nemovitostem nový život</h2>
                         <p class="text-lg text-slate-600 mb-6 leading-relaxed">
                             Specializujeme se na výkup podílů i celých nemovitostí. Oceňujeme vaši důvěru a nabízíme transparentní a férový proces. Každou nemovitost citlivě renovujeme, abychom jí vrátili hodnotu a lesk.
@@ -765,7 +240,7 @@
                             Postaráme se o veškerou administrativu a uhradíme všechny poplatky. Pokud zvažujete prodej, kontaktujte nás pro nezávaznou konzultaci a cenovou nabídku.
                         </p>
                         <a href="#kontakt" class="cta-button inline-block">
-                            Chci nacenit nemovitost
+                            Chci nezávazné nacenění zdarma
                         </a>
                     </div>
                 </div>
@@ -775,75 +250,75 @@
         <!-- How It Works Section -->
         <section id="jak-to-funguje" class="py-20 md:py-28 bg-white">
             <div class="container mx-auto px-4 sm:px-6">
-                <div class="section-header gsap-reveal">
-                    <h2 class="section-title">Proces výkupu v 5 krocích</h2>
+                <div class="section-header gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
+                    <h2 class="section-title">Proces výkupu v 5 krocích (obvykle 3 - 5 dnů)</h2>
                     <p class="section-subtitle">Jednoduchost, rychlost a transparentnost je naší prioritou</p>
                 </div>
 
                 <div class="timeline-container">
-                    <div class="timeline-line"></div>
+                    <div class="timeline-line" style="translate: none; rotate: none; scale: none; transform-origin: 50% 0%; transform: translate(-50%) scale(1, 0);"></div>
 
-                    <div class="timeline-step">
+                    <div class="timeline-step" style="translate: none; rotate: none; scale: none; transform: translate(0px, 50px) scale(0.8, 0.8); opacity: 0;">
                         <div class="timeline-content">
                             <div class="step-label">Krok 1</div>
                             <h3 class="step-title">Kontaktujte nás</h3>
                             <p class="step-description">Vyplňte formulář, zavolejte nebo napište email.</p>
                         </div>
-                        <div class="timeline-icon">
+                        <div class="timeline-icon" style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) rotate(-180deg) scale(0, 0);">
                             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                             </svg>
                         </div>
                     </div>
 
-                    <div class="timeline-step">
+                    <div class="timeline-step" style="translate: none; rotate: none; scale: none; transform: translate(0px, 50px) scale(0.8, 0.8); opacity: 0;">
                         <div class="timeline-content">
                             <div class="step-label">Krok 2</div>
                             <h3 class="step-title">Naceníme nemovitost</h3>
-                            <p class="step-description">Do 24 hodin obdržíte nezávaznou nabídku.</p>
+                            <p class="step-description">Do 24 hodin obdržíte nezávaznou nabídku na výkup vašeho podílu nebo nemovitosti.</p>
                         </div>
-                        <div class="timeline-icon">
+                        <div class="timeline-icon" style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) rotate(-180deg) scale(0, 0);">
                             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                             </svg>
                         </div>
                     </div>
 
-                    <div class="timeline-step">
+                    <div class="timeline-step" style="translate: none; rotate: none; scale: none; transform: translate(0px, 50px) scale(0.8, 0.8); opacity: 0;">
                         <div class="timeline-content">
                             <div class="step-label">Krok 3</div>
                             <h3 class="step-title">Schválení a smlouva</h3>
-                            <p class="step-description">Připravíme veškeré smluvní podklady k podpisu.</p>
+                            <p class="step-description">Pokud Vám bude cena vyhovovat a rozhodnete se pro prodej, připravíme a pošleme vám k vašemu vyjádření kupní smlouvu.</p>
                         </div>
-                        <div class="timeline-icon">
+                        <div class="timeline-icon" style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) rotate(-180deg) scale(0, 0);">
                             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
                     </div>
 
-                    <div class="timeline-step">
+                    <div class="timeline-step" style="translate: none; rotate: none; scale: none; transform: translate(0px, 50px) scale(0.8, 0.8); opacity: 0;">
                         <div class="timeline-content">
                             <div class="step-label">Krok 4</div>
                             <h3 class="step-title">Vyřízení administrativy</h3>
-                            <p class="step-description">Vklady na katastr a právní servis zařídíme za vás.</p>
+                            <p class="step-description">Nebudete muset chodit na úřady. Vklady na katastr a právní servis zařídíme za vás a uhradíme všechny poplatky.</p>
                         </div>
-                        <div class="timeline-icon">
+                        <div class="timeline-icon" style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) rotate(-180deg) scale(0, 0);">
                             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                         </div>
                     </div>
 
-                    <div class="timeline-step">
+                    <div class="timeline-step" style="translate: none; rotate: none; scale: none; transform: translate(0px, 50px) scale(0.8, 0.8); opacity: 0;">
                         <div class="timeline-content">
                             <div class="step-label">Krok 5</div>
                             <h3 class="step-title">Peníze ihned</h3>
-                            <p class="step-description">Finance vyplácíme okamžitě při podpisu smlouvy.</p>
+                            <p class="step-description">Peníze vám vyplatíme okamžitě při podpisu smlouvy.</p>
                         </div>
-                        <div class="timeline-icon">
+                        <div class="timeline-icon" style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) rotate(-180deg) scale(0, 0);">
                             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
                             </svg>
                         </div>
                     </div>
@@ -854,17 +329,17 @@
         <!-- FAQ Section -->
         <section id="faq" class="py-20 md:py-28 bg-gray-50">
             <div class="container mx-auto px-4 sm:px-6">
-                <div class="section-header gsap-reveal">
+                <div class="section-header gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                     <h2 class="section-title">Často kladené otázky</h2>
                     <p class="section-subtitle">Odpovědi na nejčastější dotazy našich klientů</p>
                 </div>
 
                 <div class="max-w-4xl mx-auto">
-                    <div class="faq-item gsap-reveal">
+                    <div class="faq-item gsap-reveal" style="translate: none; rotate: none; scale: none; transform: translate(0px, 60px); opacity: 0; visibility: hidden;">
                         <button class="faq-question">
                             <span>Jak rychle dostanu nabídku na mou nemovitost?</span>
                             <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                         <div class="faq-answer">
@@ -872,11 +347,11 @@
                         </div>
                     </div>
 
-                    <div class="faq-item gsap-reveal">
+                    <div class="faq-item gsap-reveal" style="translate: none; rotate: none; scale: none; transform: translate(0px, 60px); opacity: 0; visibility: hidden;">
                         <button class="faq-question">
                             <span>Vykupujete i podíly nemovitostí?</span>
                             <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                         <div class="faq-answer">
@@ -884,11 +359,11 @@
                         </div>
                     </div>
 
-                    <div class="faq-item gsap-reveal">
+                    <div class="faq-item gsap-reveal" style="translate: none; rotate: none; scale: none; transform: translate(0px, 60px); opacity: 0; visibility: hidden;">
                         <button class="faq-question">
                             <span>Jaké dokumenty potřebuji k prodeji?</span>
                             <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                         <div class="faq-answer">
@@ -896,39 +371,39 @@
                         </div>
                     </div>
 
-                    <div class="faq-item gsap-reveal">
+                    <div class="faq-item gsap-reveal" style="translate: none; rotate: none; scale: none; transform: translate(0px, 60px); opacity: 0; visibility: hidden;">
                         <button class="faq-question">
                             <span>Platíte skutečně okamžitě při podpisu?</span>
                             <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p class="text-slate-600">Ano, finance převádíme na váš účet okamžitě při podpisu kupní smlouvy. Máme k dispozici dostatečné finanční prostředky a nepotřebujeme čekat na schválení úvěru.</p>
+                            <p class="text-slate-600">Ano, finance převádíme na váš účet okamžitě při podpisu kupní smlouvy. Nevyužíváme bankovní úschovu, pokud to klient nevyžaduje. Klient tak získá peníze za prodej okamžitě.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item gsap-reveal">
+                    <div class="faq-item gsap-reveal" style="translate: none; rotate: none; scale: none; transform: translate(0px, 60px); opacity: 0; visibility: hidden;">
                         <button class="faq-question">
                             <span>Vykupujete nemovitosti v celé České republice?</span>
                             <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p class="text-slate-600">Primárně se zaměřujeme na Prahu a okolí, ale vykupujeme nemovitosti v celé České republice. Kontaktujte nás s informacemi o vaší nemovitosti a rádi posoudíme možnosti spolupráce.</p>
+                            <p class="text-slate-600">Ano vykupujeme nemovitosti v celé České republice. Dokonce místo a čas podpisu smluv si zvolíte sami, jak vám to bude vyhovovat. Přijedeme za vámi.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item gsap-reveal">
+                    <div class="faq-item gsap-reveal" style="translate: none; rotate: none; scale: none; transform: translate(0px, 60px); opacity: 0; visibility: hidden;">
                         <button class="faq-question">
                             <span>Co když mám na nemovitosti hypotéku nebo zástavní právo?</span>
                             <svg class="faq-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p class="text-slate-600">Není to problém. Pomůžeme vám vyřešit splacení hypotéky nebo zástavního práva. Částku za nemovitost rozděleíme - část půjde na splacení závazků a zbytek obdržíte vy.</p>
+                            <p class="text-slate-600">Není to problém. Pomůžeme vám vyřešit splacení hypotéky nebo zástavního práva. Částku za nemovitost rozdělíme - část půjde na splacení závazků a zbytek obdržíte vy.</p>
                         </div>
                     </div>
                 </div>
@@ -938,29 +413,29 @@
         <!-- References Section -->
         <section id="reference" class="py-20 md:py-28 bg-white">
             <div class="container mx-auto px-4 sm:px-6">
-                <div class="section-header gsap-reveal">
+                <div class="section-header gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                     <h2 class="section-title">Reference klientů</h2>
                     <p class="section-subtitle">Spokojenost našich klientů je naší nejlepší vizitkou</p>
                 </div>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 gsap-reveal">
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="flex items-center mb-6">
                             <div class="flex text-yellow-400">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                             </div>
                         </div>
@@ -975,23 +450,23 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 gsap-reveal">
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                         <div class="flex items-center mb-6">
                             <div class="flex text-yellow-400">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                             </div>
                         </div>
@@ -1013,68 +488,67 @@
         <section id="kontakt" class="py-20 md:py-28 bg-slate-800 text-white relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900"></div>
             <div class="container mx-auto px-4 sm:px-6 relative z-10">
-                <div class="section-header gsap-reveal">
+                <div class="section-header gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                     <h2 class="section-title text-white">Máte zájem o prodej?</h2>
-                    <p class="section-subtitle text-blue-100">Neváhejte nás kontaktovat. Jsme tu pro vás každý den.</p>
+                    <p class="section-subtitle text-blue-100">Neváhejte nás kontaktovat. Telefonicky Po-Pá 8:00-18:00 hodin. Emailem každý den.</p>
                 </div>
                 
-                <div class="modern-form max-w-6xl mx-auto p-6 md:p-12 rounded-3xl gsap-reveal">
+                <div class="modern-form max-w-6xl mx-auto p-6 md:p-12 rounded-3xl gsap-reveal" style="translate: none; rotate: none; scale: none; visibility: hidden; transform: translate(0px, 60px); opacity: 0;">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <!-- Contact Information -->
                         <div class="text-slate-800">
                             <h3 class="text-2xl font-bold mb-8 text-slate-900">Kontaktní údaje</h3>
                             
                             <!-- Contact Person -->
-                            <div class="mb-8 p-6 bg-blue-50 rounded-xl border border-blue-100">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                        AN
-                                    </div>
-                                    <div>
-                                        <p class="font-bold text-lg text-slate-900">Adéla Nováková</p>
-                                        <p class="text-blue-600 font-medium">Obchodní oddělení</p>
-                                    </div>
+                            <div class="mb-6 p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-lg">
+                                <div class="text-center mb-6">
+                                    <img src="https://nemovitostnivykupy.cz/images/contact/ContactAdela.png" alt="Adéla Nováková" class="w-32 h-32 mx-auto rounded-full object-cover shadow-lg border-4 border-white mb-4">
+                                    <h4 class="font-bold text-xl text-slate-900 mb-1">Adéla Nováková</h4>
+                                    <p class="text-blue-600 font-semibold text-lg mb-2">Obchodní oddělení</p>
+                                    <div class="w-12 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mx-auto mb-3"></div>
+                                    <p class="text-sm text-slate-600 leading-relaxed">Specialistka na výkup nemovitostí</p>
                                 </div>
-                                <p class="text-sm text-slate-600">Specialistka na výkup nemovitostí s více než 5 lety zkušeností</p>
                             </div>
                             
                             <!-- Contact Details -->
-                            <div class="space-y-6">
-                                <a href="tel:+420770156156" class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-                                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold text-slate-900">+420 770 156 156</p>
-                                        <p class="text-sm text-slate-600">Volejte kdykoliv, 7 dní v týdnu</p>
-                                    </div>
-                                </a>
-                                
-                                <a href="mailto:info@nemovitostnivykupy.cz" class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
-                                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold text-slate-900">info@nemovitostnivykupy.cz</p>
-                                        <p class="text-sm text-slate-600">Odpovídáme do 2 hodin</p>
-                                    </div>
-                                </a>
-                                
-                                <div class="flex items-center gap-4 p-4">
-                                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="font-semibold text-slate-900">U Rustonky 714/1, Praha 8</p>
-                                        <p class="text-sm text-slate-600">Osobní konzultace po domluvě</p>
-                                    </div>
+                            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-lg p-6">
+                                <div class="space-y-4">
+                                    <a href="tel:+420770156156" class="flex items-center gap-4 p-4 rounded-xl hover:bg-white/50 transition-colors group">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-slate-900">+420 770 156 156</p>
+                                            <p class="text-sm text-slate-600">Po-Pá 8:00-18:00</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="mailto:info@nemovitostnivykupy.cz" class="flex items-center gap-4 p-4 rounded-xl hover:bg-white/50 transition-colors group">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-slate-900">info@nemovitostnivykupy.cz</p>
+                                            <p class="text-sm text-slate-600">Odpovídáme do 2 hodin</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="https://maps.app.goo.gl/xxo9vB6FmzDf1kXFA" target="_blank" class="flex items-center gap-4 p-4 rounded-xl hover:bg-white/50 transition-colors group">
+                                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-slate-900">U Rustonky 714/1, Praha 8</p>
+                                            <p class="text-sm text-slate-600">Osobní konzultace po domluvě</p>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1084,12 +558,12 @@
                             <h3 class="text-2xl font-bold mb-8 text-slate-900">Napište nám</h3>
                             <form action="#" method="POST" class="space-y-6">
                                 <div class="grid sm:grid-cols-2 gap-4">
-                                    <input type="text" name="name" class="form-input" placeholder="Vaše jméno *" required>
+                                    <input type="text" name="name" class="form-input" placeholder="Vaše jméno *" required="">
                                     <input type="tel" name="phone" class="form-input" placeholder="Telefon">
                                 </div>
-                                <input type="email" name="email" class="form-input w-full" placeholder="Váš email *" required>
-                                <select name="property_type" class="form-select">
-                                    <option value="">Vyberte typ nemovitosti</option>
+                                <input type="email" name="email" class="form-input w-full" placeholder="Váš email *" required="">
+                                <select name="property_type" class="form-select" required="" style="color: rgb(203, 213, 225);">
+                                    <option value="" disabled="" selected="">Vyberte typ nemovitosti</option>
                                     <option value="rodinny-dum">Rodinný dům</option>
                                     <option value="cinzovni-dum">Činžovní dům</option>
                                     <option value="byt-osobni-vlastnictvi">Byt v osobním vlastnictví</option>
@@ -1104,10 +578,10 @@
                                     <option value="komerci-objekt">Komerční objekt</option>
                                     <option value="jine">Jiný typ nemovitosti</option>
                                 </select>
-                                <textarea name="message" rows="5" class="form-input w-full" placeholder="Popište stručně vaši nemovitost, její stav, lokalitu a důvod prodeje. Čím více informací nám poskytnete, tím rychleji a přesněji vám můžeme připravit cenovou nabídku." required></textarea>
+                                <textarea name="message" rows="5" class="form-input w-full" placeholder="Popište stručně vaši nemovitost, její stav, lokalitu a důvod prodeje. Čím více informací nám poskytnete, tím rychleji a přesněji vám můžeme připravit cenovou nabídku." required=""></textarea>
                                 
                                 <div class="flex items-start gap-3">
-                                    <input type="checkbox" id="gdpr" name="gdpr" class="mt-1 rounded border-gray-300 text-blue-600" required>
+                                    <input type="checkbox" id="gdpr" name="gdpr" class="mt-1 rounded border-gray-300 text-blue-600" required="">
                                     <label for="gdpr" class="text-sm text-slate-600">
                                         Souhlasím se zpracováním osobních údajů za účelem zpracování poptávky podle GDPR *
                                     </label>
@@ -1135,8 +609,8 @@
                 <div class="flex justify-center mb-6">
                     <img src="https://nemovitostnivykupy.cz/images/loga/Nemovitostni_vykupy-White@2x.png" alt="Nemovitostní výkupy" class="h-6 sm:h-8 w-auto">
                 </div>
-                <p class="text-slate-300 mb-4">Profesionální přístup k vaší nemovitosti</p>
-                <p class="text-sm">&copy; 2024 Nemovitostnivykupy.cz - Všechna práva vyhrazena.</p>
+                <p class="text-slate-300 mb-4">Spokojenost našich klientů je pro nás prioritou</p>
+                <p class="text-sm">© 2024 Nemovitostnivykupy.cz - Všechna práva vyhrazena.</p>
             </div>
         </div>
     </footer>
@@ -1163,202 +637,116 @@
     
     <div class="mobile-overlay fixed inset-0 bg-black bg-opacity-50 z-30 hidden" id="mobileOverlay"></div>
 
-    <script>
-        // Mobile Navigation
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        const closeMenuButton = document.getElementById('close-menu-btn');
+    <!-- Contact Popup Modal -->
+    <div class="popup-overlay" id="contactPopup">
+        <div class="popup-modal">
+            <button class="popup-close" id="closePopup">
+                <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="popup-header">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">Máte zájem o prodej?</h2>
+                <p class="text-blue-100 text-lg">Neváhejte nás kontaktovat. Telefonicky Po-Pá 8:00-18:00 hodin. Emailem každý den.</p>
+            </div>
+            
+            <div class="popup-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Contact Person -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-slate-900">Kontaktní údaje</h3>
+                        
+                        <div class="mb-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-lg">
+                            <div class="text-center mb-4">
+                                <img src="https://nemovitostnivykupy.cz/images/contact/ContactAdela.png" alt="Adéla Nováková" class="w-24 h-24 mx-auto rounded-full object-cover shadow-lg border-4 border-white mb-3">
+                                <h4 class="font-bold text-lg text-slate-900 mb-1">Adéla Nováková</h4>
+                                <p class="text-blue-600 font-semibold mb-2">Obchodní oddělení</p>
+                                <div class="w-8 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mx-auto mb-2"></div>
+                                <p class="text-xs text-slate-600 leading-relaxed">Specialistka na výkup nemovitostí</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-lg p-4">
+                            <div class="space-y-3">
+                                <a href="tel:+420770156156" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/50 transition-colors group">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-slate-900 text-sm">+420 770 156 156</p>
+                                        <p class="text-xs text-slate-600">Po-Pá 8:00-18:00</p>
+                                    </div>
+                                </a>
+                                
+                                <a href="mailto:info@nemovitostnivykupy.cz" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/50 transition-colors group">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-slate-900 text-sm">info@nemovitostnivykupy.cz</p>
+                                        <p class="text-xs text-slate-600">Odpovídáme do 2 hodin</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-slate-900">Napište nám</h3>
+                        <form action="#" method="POST" class="space-y-4" id="popupContactForm">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <input type="text" name="name" class="form-input" placeholder="Vaše jméno *" required="">
+                                <input type="tel" name="phone" class="form-input" placeholder="Telefon">
+                            </div>
+                            <input type="email" name="email" class="form-input w-full" placeholder="Váš email *" required="">
+                            <select name="property_type" class="form-select" required="" style="color: rgb(203, 213, 225);">
+                                <option value="" disabled="" selected="">Vyberte typ nemovitosti</option>
+                                <option value="rodinny-dum">Rodinný dům</option>
+                                <option value="cinzovni-dum">Činžovní dům</option>
+                                <option value="byt-osobni-vlastnictvi">Byt v osobním vlastnictví</option>
+                                <option value="byt-druzstevni">Družstevní byt</option>
+                                <option value="chata">Chata</option>
+                                <option value="chalupa">Chalupa</option>
+                                <option value="garaz-samostatna">Garáž samostatná</option>
+                                <option value="garaz-radova">Garáž řadová</option>
+                                <option value="pozemek-stavebni">Stavební pozemek</option>
+                                <option value="pozemek-zemedelsky">Zemědělský pozemek</option>
+                                <option value="podil-nemovitosti">Podíl na nemovitosti</option>
+                                <option value="komerci-objekt">Komerční objekt</option>
+                                <option value="jine">Jiný typ nemovitosti</option>
+                            </select>
+                            <textarea name="message" rows="4" class="form-input w-full" placeholder="Popište stručně vaši nemovitost, její stav, lokalitu a důvod prodeje. Čím více informací nám poskytnete, tím rychleji a přesněji vám můžeme připravit cenovou nabídku." required=""></textarea>
+                            
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox" id="gdprPopup" name="gdpr" class="mt-1 rounded border-gray-300 text-blue-600" required="">
+                                <label for="gdprPopup" class="text-sm text-slate-600">
+                                    Souhlasím se zpracováním osobních údajů za účelem zpracování poptávky podle GDPR *
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="cta-button w-full">
+                                Odeslat nezávaznou poptávku
+                            </button>
+                            
+                            <p class="text-xs text-slate-500 text-center">
+                                * Povinné pole. Odpovíme vám do 24 hodin s nezávaznou cenovou nabídkou.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        function toggleMobileMenu() {
-            hamburger.classList.toggle('open');
-            mobileMenu.classList.toggle('open');
-            mobileOverlay.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden');
-        }
 
-        function closeMobileMenu() {
-            hamburger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            mobileOverlay.classList.add('hidden');
-            document.body.classList.remove('overflow-hidden');
-        }
+<script src="script.js"></script>
 
-        
 
-        hamburger.addEventListener('click', toggleMobileMenu);
-        mobileOverlay.addEventListener('click', closeMobileMenu);
-        closeMenuButton.addEventListener('click', closeMobileMenu); 
-        
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
 
-        // FAQ Functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.closest('.faq-item');
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            });
-        });
-
-        // GSAP Animations
-        document.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-            // Hero Section Animation
-            const heroTl = gsap.timeline({defaults: {ease: 'power3.out'}});
-            heroTl.to('#hero-title', {opacity: 1, y: 0, duration: 1.2})
-              .to('#hero-subtitle', {opacity: 1, y: 0, duration: 1}, '-=0.8')
-              .to('#hero-button', {opacity: 1, y: 0, duration: 0.8}, '-=0.6')
-              .to('#hero-cards', {opacity: 1, y: 0, duration: 1}, '-=0.4');
-
-            // Stats Counter Animation
-            const statsCounters = document.querySelectorAll('.stat-number');
-            statsCounters.forEach(counter => {
-                const target = parseInt(counter.dataset.target);
-                
-                gsap.fromTo(counter, {
-                    innerHTML: 0
-                }, {
-                    innerHTML: target,
-                    duration: 2,
-                    ease: 'power2.out',
-                    snap: { innerHTML: 1 },
-                    scrollTrigger: {
-                        trigger: counter,
-                        start: 'top 80%',
-                        toggleActions: 'play none none reverse'
-                    }
-                });
-            });
-
-            // Timeline Animation
-            const timelineLineAnimation = gsap.fromTo('.timeline-line', 
-                { scaleY: 0, transformOrigin: 'top center' },
-                {
-                    scaleY: 1,
-                    duration: 2,
-                    ease: 'power2.inOut',
-                    scrollTrigger: {
-                        trigger: '.timeline-container',
-                        start: 'top 70%',
-                        end: 'bottom 30%',
-                        toggleActions: 'play none none reverse'
-                    }
-                }
-            );
-
-            // Timeline Steps Animation
-            const timelineSteps = gsap.utils.toArray('.timeline-step');
-            timelineSteps.forEach((step, index) => {
-                gsap.fromTo(step,
-                    { 
-                        opacity: 0, 
-                        y: 50,
-                        scale: 0.8
-                    },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        duration: 0.8,
-                        ease: 'power3.out',
-                        delay: index * 0.2,
-                        scrollTrigger: {
-                            trigger: step,
-                            start: 'top 85%',
-                            toggleActions: 'play none none reverse'
-                        }
-                    }
-                );
-
-                const icon = step.querySelector('.timeline-icon');
-                if (icon) {
-                    gsap.fromTo(icon,
-                        { 
-                            scale: 0,
-                            rotation: -180
-                        },
-                        {
-                            scale: 1,
-                            rotation: 0,
-                            duration: 0.6,
-                            ease: 'back.out(1.7)',
-                            delay: (index * 0.2) + 0.3,
-                            scrollTrigger: {
-                                trigger: step,
-                                start: 'top 85%',
-                                toggleActions: 'play none none reverse'
-                            }
-                        }
-                    );
-                }
-            });
-
-            // FAQ Items staggered reveal
-            gsap.utils.toArray('.faq-item').forEach((item, index) => {
-                gsap.fromTo(item,
-                    { opacity: 0, y: 30 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.6,
-                        delay: index * 0.1,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: item,
-                            start: 'top 90%',
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-            });
-
-            // General section reveal with stagger
-            gsap.utils.toArray('.gsap-reveal').forEach((elem, index) => {
-                const delay = elem.classList.contains('section-header') ? 0 : index * 0.1;
-                
-                gsap.fromTo(elem, 
-                    { opacity: 0, y: 60, visibility: 'hidden' }, 
-                    {
-                        opacity: 1, y: 0, visibility: 'visible',
-                        duration: 1, ease: 'power3.out',
-                        delay: delay,
-                        scrollTrigger: {
-                            trigger: elem,
-                            start: 'top 85%',
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+</body></html>
